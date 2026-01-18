@@ -49,7 +49,7 @@ const RevenueChart = ({ data = defaultData }: { data?: ChartData[] }) => {
   };
 
   // Generate Smooth Path (Cubic Bezier)
-  const createSmoothPath = (points: string | any[]) => {
+  const createSmoothPath = (points: { x: number; y: number }[]) => {
     if (points.length === 0) return "";
     let d = `M ${points[0].x} ${points[0].y}`;
     for (let i = 0; i < points.length - 1; i++) {
