@@ -1,0 +1,490 @@
+.dashboard {
+  --cd-edge-gap: 16px;
+  --cd-text: #1c1c1c;
+  --cd-muted: rgba(28, 28, 28, 0.4);
+  --cd-divider: rgba(28, 28, 28, 0.2);
+  --cd-divider-soft: rgba(28, 28, 28, 0.08);
+  --cd-hover: rgba(28, 28, 28, 0.04);
+  --cd-placeholder: rgba(28, 28, 28, 0.03);
+
+  --cd-surface: #f7f9fb;
+  --cd-dot-muted: #a8c5da;
+
+  --cd-stat-blue: #e3f5ff;
+  --cd-stat-surface: #f7f9fb;
+  --cd-stat-growth: #e5ecf6;
+
+  --cd-sales-direct: #111827;
+  --cd-sales-affiliate: #95a4fc;
+  --cd-sales-sponsored: #b1e3ff;
+  --cd-sales-email: #baedbd;
+
+  position: absolute;
+  width: auto;
+  height: 970px;
+  left: calc(240px - var(--sidebar-width));
+  right: var(--cd-edge-gap);
+  top: calc(140px - var(--topbar-height));
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 0px;
+  gap: 28px;
+}
+
+:global(html[data-theme="dark"]) .dashboard {
+  --cd-text: var(--foreground);
+  --cd-muted: rgba(255, 255, 255, 0.4);
+  --cd-divider: rgba(255, 255, 255, 0.1);
+  --cd-divider-soft: rgba(255, 255, 255, 0.05);
+  --cd-hover: rgba(255, 255, 255, 0.05);
+  --cd-placeholder: rgba(255, 255, 255, 0.05);
+
+  --cd-surface: #1C1C1C;
+  --cd-dot-muted: #A8C5DA;
+
+  --cd-stat-blue: #E3F5FF;
+  --cd-stat-surface: #1C1C1C;
+  --cd-stat-growth: #E5ECF6;
+
+  --cd-sales-direct: rgba(255, 255, 255, 0.9);
+  --cd-sales-affiliate: #95a4fc;
+  --cd-sales-sponsored: #b1e3ff;
+  --cd-sales-email: #baedbd;
+}
+
+:global(html[data-theme="dark"]) .statCard[data-variant="blue"],
+:global(html[data-theme="dark"]) .statCard[data-variant="growth"] {
+  --cd-text: #1C1C1C;
+}
+
+.group {
+  flex: none;
+  width: 432px;
+  height: 252px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 0px;
+  gap: 28px;
+}
+
+.statCard {
+  width: 202px;
+  min-width: 200px;
+  height: 112px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  border-radius: 16px;
+}
+
+.statTitleRow {
+  width: 100%;
+  height: 20px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+}
+
+.statTitle {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--cd-text);
+}
+
+.statValueRow {
+  width: 100%;
+  height: 36px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+}
+
+.statValue {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 600;
+  color: var(--cd-text);
+}
+
+.delta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: var(--cd-text);
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  color: var(--cd-text);
+}
+
+.block {
+  background: var(--cd-surface);
+  border-radius: 16px;
+}
+
+.blockSmall {
+  flex: 1 1 432px;
+  min-width: 432px;
+  height: 252px;
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.blockLarge {
+  flex: 1 1 662px;
+  min-width: 662px;
+  height: 318px;
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.blockTable {
+  flex: 1 1 662px;
+  min-width: 662px;
+  height: 336px;
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.blockMap {
+  flex: 0 0 202px;
+  width: 202px;
+  min-width: 200px;
+  max-width: 272px;
+  height: 318px;
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.blockSales {
+  flex: 0 0 202px;
+  width: 202px;
+  min-width: 200px;
+  max-width: 272px;
+  height: 344px;
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.salesChart {
+  width: 120px;
+  height: 120px;
+}
+
+.blockTitle {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--cd-text);
+}
+
+.placeholder {
+  align-self: stretch;
+  background: var(--cd-placeholder);
+  border-radius: 12px;
+}
+
+.placeholderSmallChart {
+  width: 100%;
+  height: 168px;
+}
+
+.placeholderLargeChart {
+  width: 100%;
+  height: 232px;
+}
+
+.placeholderRevenueChart {
+  width: 100%;
+  height: 232px;
+}
+
+.headerRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: var(--cd-text);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--cd-text);
+}
+
+.dotMuted {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--cd-dot-muted);
+}
+
+.mapImg {
+  width: 154px;
+  height: 82px;
+  object-fit: contain;
+}
+
+.locationList {
+  width: 154px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.locationRow {
+  width: 154px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.locationLine {
+  width: 154px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: var(--cd-text);
+}
+
+.bar {
+  width: 154px;
+  height: 2px;
+  background: color-mix(in srgb, var(--cd-dot-muted) 35%, transparent);
+  border-radius: 80px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 2px;
+  background: var(--cd-dot-muted);
+  border-radius: 80px;
+}
+
+.table {
+  width: 100%;
+  height: 264px;
+
+  display: grid;
+  grid-template-columns: minmax(224px, 1fr) 130px 130px 130px;
+}
+
+.cell {
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--cd-text);
+}
+
+.cellHeader {
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--cd-muted);
+  border-bottom: 1px solid var(--cd-divider);
+}
+
+.tableRowDivider {
+  border-bottom: 1px solid var(--cd-divider-soft);
+}
+
+
+
+.salesLegend {
+  width: 154px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.salesLegendRow {
+  width: 154px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--cd-text);
+}
+
+.salesLegendLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.salesDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--cd-sales-direct);
+}
+
+.salesDotBlue {
+  background: var(--cd-sales-email);
+}
+
+.salesDotGreen {
+  background: var(--cd-sales-affiliate);
+}
+
+.salesDotPurple {
+  background: var(--cd-sales-sponsored);
+}
+
+@media (max-width: 1100px) {
+  .dashboard {
+    position: static;
+    width: 100%;
+    height: auto;
+    left: auto;
+    top: auto;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .group {
+    width: 100%;
+    height: auto;
+    gap: 16px;
+  }
+
+  .statCard {
+    flex: 1 1 260px;
+  }
+
+  .blockSmall,
+  .blockLarge,
+  .blockTable {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+  }
+
+  .blockMap,
+  .blockSales {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .placeholderSmallChart,
+  .placeholderRevenueChart {
+    width: 100%;
+  }
+
+  .table {
+    width: 100%;
+    overflow-x: auto;
+    grid-template-columns: 224px 130px 130px 130px;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 400px; /* Ensure visibility */
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--cd-divider-soft);
+  border-bottom-color: var(--cd-text);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

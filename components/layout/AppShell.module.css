@@ -1,0 +1,6 @@
+.content {
+  min-height: 100vh;
+  transition:
+    padding-left 220ms ease,
+    padding-right 220ms ease;
+}

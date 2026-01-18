@@ -1,0 +1,165 @@
+.rightbar {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 24px;
+
+  position: fixed;
+  width: 280px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  transform: translateX(0);
+  transition: transform 220ms ease;
+  will-change: transform;
+
+  border-left: 1px solid var(--rightbar-border);
+  background: var(--background);
+  color: var(--foreground);
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.collapsed {
+  transform: translateX(100%);
+  pointer-events: none;
+}
+
+.rightbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--rightbar-title-fg);
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Notifications */
+
+.notification {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notifIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--rightbar-icon-bg);
+  border: 1px solid var(--rightbar-icon-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.notifText {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.primary {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rightbar-primary-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.secondary {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rightbar-secondary-fg);
+}
+
+/* Activities */
+
+.activity {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  column-gap: 12px;
+  align-items: start;
+}
+
+.avatarWrap {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.timelineLine {
+  position: absolute;
+  left: -30px;
+  top: 38px;
+  bottom: -14px;
+  width: 1px;
+  background: var(--rightbar-timeline-line);
+}
+
+.activity:last-child .timelineLine {
+  display: none;
+}
+
+/* Contacts */
+
+.contact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contactName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rightbar-contact-fg);
+}
+
+@media (max-width: 768px) {
+  .rightbar {
+    top: 68px;
+    z-index: 45;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  }
+}

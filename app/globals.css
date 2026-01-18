@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --sidebar-bg: #ffffff;
+  --sidebar-fg: #1C1C1C;
+  --sidebar-muted: rgba(28, 28, 28, 0.4);
+  --sidebar-border: rgba(28, 28, 28, 0.1);
+  --sidebar-hover: rgba(28, 28, 28, 0.05);
+  --sidebar-active-indicator: #1C1C1C;
+  --sidebar-icon-filter: none;
+
+  /* Topbar Light */
+  --topbar-bg: #ffffff;
+  --topbar-fg: #1C1C1C;
+  --topbar-muted: rgba(28, 28, 28, 0.4);
+  --topbar-border: rgba(28, 28, 28, 0.1);
+  --topbar-hover: rgba(28, 28, 28, 0.05);
+  --topbar-search-bg: rgba(28, 28, 28, 0.05);
+  --topbar-search-text: #1C1C1C;
+  --topbar-placeholder: rgba(28, 28, 28, 0.2);
+  --topbar-kbd: rgba(28, 28, 28, 0.2);
+  --topbar-icon-filter: none;
+
+  /* Rightbar Light */
+  --rightbar-border: rgba(28, 28, 28, 0.1);
+  --rightbar-title-fg: rgba(28, 28, 28, 0.85);
+  --rightbar-icon-bg: rgba(28, 28, 28, 0.04);
+  --rightbar-icon-border: rgba(28, 28, 28, 0.08);
+  --rightbar-primary-fg: rgba(28, 28, 28, 0.8);
+  --rightbar-secondary-fg: rgba(28, 28, 28, 0.45);
+  --rightbar-contact-fg: rgba(28, 28, 28, 0.75);
+  --rightbar-timeline-line: rgba(28, 28, 28, 0.12);
+}
+
+html[data-theme="dark"] {
+  --sidebar-bg: #0a0a0a;
+  --sidebar-fg: #ededed;
+  --sidebar-muted: rgba(255, 255, 255, 0.4);
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-hover: rgba(255, 255, 255, 0.1);
+  --sidebar-active-indicator: #ededed;
+  --sidebar-icon-filter: none;
+
+  /* Topbar Dark */
+  --topbar-bg: #0a0a0a;
+  --topbar-fg: #ededed;
+  --topbar-muted: rgba(255, 255, 255, 0.4);
+  --topbar-border: rgba(255, 255, 255, 0.1);
+  --topbar-hover: rgba(255, 255, 255, 0.1);
+  --topbar-search-bg: rgba(255, 255, 255, 0.1);
+  --topbar-search-text: #ededed;
+  --topbar-placeholder: rgba(255, 255, 255, 0.45);
+  --topbar-kbd: rgba(255, 255, 255, 0.55);
+  --topbar-icon-filter: invert(1);
+
+  /* Rightbar Dark */
+  --rightbar-border: rgba(255, 255, 255, 0.12);
+  --rightbar-title-fg: rgba(255, 255, 255, 0.88);
+  --rightbar-icon-bg: rgba(255, 255, 255, 0.06);
+  --rightbar-icon-border: rgba(255, 255, 255, 0.12);
+  --rightbar-primary-fg: rgba(255, 255, 255, 0.82);
+  --rightbar-contact-fg: rgba(255, 255, 255, 0.75);
+  --rightbar-secondary-fg: rgba(255, 255, 255, 0.45);
+  --rightbar-timeline-line: rgba(255, 255, 255, 0.14);
+}

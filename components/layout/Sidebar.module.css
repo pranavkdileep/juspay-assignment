@@ -1,0 +1,259 @@
+.sidebar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+    gap: 16px;
+    position: absolute;
+    width: 212px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    border-right: 1px solid var(--sidebar-border);
+    background: var(--sidebar-bg);
+    transition: transform 220ms ease;
+    z-index: 40;
+}
+
+.collapsed {
+    transform: translateX(-100%);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    gap: 8px;
+    width: 180px;
+    height: 32px;
+    border-radius: 8px;
+    flex: none;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    width: auto;
+    height: 20px;
+}
+
+.brandName {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--sidebar-fg);
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 0px 12px;
+    gap: 4px;
+    width: 180px;
+    flex: none;
+}
+
+.tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 4px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--sidebar-muted);
+    /* Muted by default */
+    cursor: pointer;
+}
+
+.tabActive {
+    /* No specific active style in Figma dump for the text itself, assuming it stays muted or becomes slightly darker? 
+     The dump shows "color: rgba(28, 28, 28, 0.4);" for one Button text and "color: rgba(28, 28, 28, 0.2);" for another?
+     Actually, looking at the image, 'Favorites' and 'Recently' look muted. 
+     I will keep them muted to match the dump.
+  */
+    color: var(--sidebar-muted);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    gap: 4px;
+    flex: none;
+}
+
+.sectionTitle {
+    padding: 4px 12px;
+    width: 180px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--sidebar-muted);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 8px;
+    width: 180px;
+    height: 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--sidebar-fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.itemActive {
+    background: var(--sidebar-hover);
+    /* "Content" background in Figma dump */
+}
+
+/* 
+   For active items, Figma has a "Rectangle 1" (black bar) 
+   position: absolute; left: 0%; right: 80%; ...
+   Wait, "right: 80%" implies width is 20%? 
+   Actually, looking closer at "Rectangle 1" in "Group":
+   width: 24px; height: 20px. 
+   Inside "Group":
+   "Rectangle 1" position absolute, left 0, right 80...
+   This seems to be the small indicator. 
+   
+   However, simpler implementation: border-left or pseudo element.
+   But let's stick to the styling provided. 
+   The item has "Content" (bg) and inside "Group" (indicator).
+   
+   I'll implement the active background first. 
+   The black bar seems to be part of the icon group in the Figma dump? 
+   No, it's separate. 
+   
+   Let's check the image. Active item "Default" has the PieChart icon. 
+   To the left of the item text/icon, there is a small black vertical pill/bar? 
+   The image shows a black vertical bar | next to the "Default" text row? 
+   Actually, looking at the cropped image: 
+   There is a black vertical bar on the far left of the item, outside the icon? 
+   Or is it the "Selected" element?
+   
+   Figma dump says regarding "Default" item:
+   "Rectangle 1" background: #1C1C1C. 
+   This is inside "Group" which is order 0. 
+   "IconSet" (PieChart) is order 1 of that group?
+   
+   It seems for active items, we show this indicator.
+*/
+
+.indicator {
+    width: 4px;
+    height: 16px;
+    background: var(--sidebar-active-indicator);
+    border-radius: 2px;
+    /* positioning */
+    position: absolute;
+    left: 0;
+    /* The padding of the item is 4px 8px. The indicator might be absolutely positioned. */
+    display: none;
+}
+
+.itemActive .indicator {
+    display: block;
+}
+
+.icon {
+    width: 20px;
+    /* Updated from 16 to match 20px in Figma dump */
+    height: 20px;
+    opacity: 1;
+    filter: var(--sidebar-icon-filter);
+}
+
+.labelRow {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--sidebar-fg);
+}
+
+.pill {
+    font-size: 12px;
+    color: var(--sidebar-muted);
+}
+
+.children {
+    display: flex;
+    flex-direction: column;
+    padding-left: 28px;
+    /* Indentation */
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.childItem {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--sidebar-fg);
+    padding: 4px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.childItem:hover {
+    background: var(--sidebar-hover);
+}
+
+/* Dark mode handled via CSS variables in globals.css */
+
+@media (max-width: 768px) {
+    .sidebar {
+        top: 68px;
+        height: calc(100% - 68px);
+        z-index: 45;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    }
+}
