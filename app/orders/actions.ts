@@ -71,17 +71,12 @@ const ADDRESSES = [
 ];
 
 const AVATARS = [
-  "/avatar-1.svg",
-  "/avatar-2.svg",
-  "/avatar-3.svg",
-  "/avatar-4.svg",
-  "/avatar-5.svg",
-  "/avatar-6.svg",
-  "/avatar-7.svg",
-  "/avatar-8.svg",
-  "/avatar-9.svg",
-  "/avatar-10.svg",
-  "/avatar-11.svg",
+  "/assests/light/contacts/user1.svg",
+  "/assests/light/contacts/user2.svg",
+  "/assests/light/contacts/user3.svg",
+  "/assests/light/contacts/user4.svg",
+  "/assests/light/contacts/user5.svg",
+  "/assests/light/contacts/user6.svg",
 ];
 
 function pad2(value: number) {

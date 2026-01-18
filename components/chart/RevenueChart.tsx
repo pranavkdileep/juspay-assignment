@@ -3,7 +3,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './RevenueChart.module.css';
 
-const defaultData = [
+interface ChartData {
+  label: string;
+  revenue: number;
+  projection: number;
+}
+
+const defaultData: ChartData[] = [
   { label: 'Jan', revenue: 8000000, projection: 14000000 },
   { label: 'Feb', revenue: 18000000, projection: 9000000 },
   { label: 'Mar', revenue: 13000000, projection: 10000000 },
@@ -12,10 +18,10 @@ const defaultData = [
   { label: 'Jun', revenue: 24000000, projection: 21000000 },
 ];
 
-const RevenueChart = ({ data = defaultData }) => {
-  const [hoverData, setHoverData] = useState(null);
+const RevenueChart = ({ data = defaultData }: { data?: ChartData[] }) => {
+  const [hoverData, setHoverData] = useState<(ChartData & { x: number }) | null>(null);
   const [chartWidth, setChartWidth] = useState(0);
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;

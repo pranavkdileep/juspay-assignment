@@ -3,7 +3,12 @@
 import React, { useState } from 'react';
 import styles from './SnowChart.module.css';
 
-const defaultData = [
+interface SnowChartData {
+  label: string;
+  value: number;
+}
+
+const defaultData: SnowChartData[] = [
   { label: 'Jan', value: 20000000 },
   { label: 'Feb', value: 25000000 },
   { label: 'Mar', value: 21000000 },
@@ -12,14 +17,14 @@ const defaultData = [
   { label: 'Jun', value: 25000000 },
 ];
 
-const SnowChart = ({ data = defaultData }) => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+const SnowChart = ({ data = defaultData }: { data?: SnowChartData[] }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Constants
   const MAX_VALUE = 30000000; // 30M
   const CHART_HEIGHT = 140; // The height of the drawing area (excluding labels)
 
-  const formatValue = (val) => {
+  const formatValue = (val: number) => {
     if (val >= 1000000) return `${val / 1000000}M`;
     return val;
   };

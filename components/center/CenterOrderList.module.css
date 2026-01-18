@@ -13,10 +13,6 @@
   --ol-surface: #f7f9fb;
   --ol-surface-2: rgba(255, 255, 255, 0.4);
   --ol-surface-3: rgba(28, 28, 28, 0.05);
-  --ol-search-border: rgba(28, 28, 28, 0.1);
-  --ol-search-focus-border: rgba(28, 28, 28, 0.22);
-  --ol-search-focus-bg: rgba(255, 255, 255, 0.6);
-  --ol-search-placeholder: rgba(28, 28, 28, 0.2);
 }
 
 :global(html[data-theme="dark"]) .wrap {
@@ -27,10 +23,6 @@
   --ol-surface: rgba(255, 255, 255, 0.06);
   --ol-surface-2: rgba(255, 255, 255, 0.08);
   --ol-surface-3: rgba(255, 255, 255, 0.08);
-  --ol-search-border: rgba(255, 255, 255, 0.1);
-  --ol-search-focus-border: rgba(255, 255, 255, 0.22);
-  --ol-search-focus-bg: rgba(255, 255, 255, 0.12);
-  --ol-search-placeholder: rgba(255, 255, 255, 0.2);
 }
 
 .frame {
@@ -144,21 +136,17 @@
   gap: 8px;
 
   margin-left: auto;
-  background: var(--ol-surface-2);
-  border: 1px solid var(--ol-search-border);
+  background: var(--topbar-search-bg);
   border-radius: 8px;
-  transition: border-color 160ms ease, background-color 160ms ease;
-}
-
-.search:focus-within {
-  border-color: var(--ol-search-focus-border);
-  background: var(--ol-search-focus-bg);
+  transition: background-color 160ms ease;
+  color: var(--topbar-search-text);
 }
 
 .searchIcon {
   width: 16px;
   height: 16px;
-  opacity: 0.6;
+  opacity: 1;
+  filter: var(--topbar-icon-filter);
 }
 
 .searchInput {
@@ -170,11 +158,11 @@
 
   font-size: 14px;
   line-height: 20px;
-  color: var(--ol-text);
+  color: var(--topbar-search-text);
 }
 
 .searchInput::placeholder {
-  color: var(--ol-search-placeholder);
+  color: var(--topbar-placeholder);
 }
 
 .searchGhost {
